@@ -13,23 +13,33 @@
             console.log(supported);
 
             const player = document.getElementById('player');
+            const canvas = document.getElementById('canvas');
+            const context = canvas.getContext('2d');
+            const captureButton = document.getElementById('capture');
 
             const constraints = {
                 video: true,
             };
+
+            captureButton.addEventListener('click', () => {
+                // Draw the video frame to the canvas.
+                context.drawImage(player, 0, 0, canvas.width, canvas.height);
+            });
 
             navigator.mediaDevices.getUserMedia(constraints)
                 .then((stream) => {
                     player.srcObject = stream;
                 });
         });
-
     </script>
 </head>
 
 <body>
     <div id="content"></div>
+    <button id="capture">Capture</button>
     <video id="player" controls autoplay></video>
+    <canvas id="canvas" width=320 height=240></canvas>
+
 </body>
 
 </html>
