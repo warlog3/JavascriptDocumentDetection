@@ -8,19 +8,22 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script>
-        const supported = 'mediaDevices' in navigator;
-        console.log(supported);
+        $(document).ready(function () {
+            const supported = 'mediaDevices' in navigator;
+            console.log(supported);
 
-        const player = document.getElementById('player');
+            const player = document.getElementById('player');
 
-        const constraints = {
-            video: true,
-        };
+            const constraints = {
+                video: true,
+            };
 
-        navigator.mediaDevices.getUserMedia(constraints)
-            .then((stream) => {
-                player.srcObject = stream;
-            });
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then((stream) => {
+                    player.srcObject = stream;
+                });
+        });
+
     </script>
 </head>
 
