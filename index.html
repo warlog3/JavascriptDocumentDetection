@@ -16,6 +16,7 @@
             const canvas = document.getElementById('canvas');
             const context = canvas.getContext('2d');
             const captureButton = document.getElementById('capture');
+            var counter = 0;
 
             const constraints = {
                 video: true,
@@ -23,7 +24,14 @@
 
             captureButton.addEventListener('click', () => {
                 // Draw the video frame to the canvas.
+
+                let canvas = document.createElement('canvas');
+                canvas.attr('id','canvas'+counter)
+                $('.img_shot').append(canvas);
+
+                let context = canvas.getContext('2d');
                 context.drawImage(player, 0, 0, canvas.width, canvas.height);
+                counter++;
             });
 
             navigator.mediaDevices.getUserMedia(constraints)
@@ -38,7 +46,10 @@
     <div id="content"></div>
     <button id="capture">Capture</button>
     <video id="player" controls autoplay></video>
-    <canvas id="canvas" width=320 height=240></canvas>
+    <div class="img_shot">
+
+    </div>
+    <!--<canvas id="canvas" width=320 height=240></canvas>-->
 
 </body>
 
