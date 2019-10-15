@@ -4,14 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Titel der Seite | Name der Website</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script>
         const supported = 'mediaDevices' in navigator;
         alert(supported);
+        $('#content').text(supported.toString());
     </script>
   </head>
   <body>
-    <!-- Sichtbarer Dokumentinhalt im body -->
-    <p>Sehen Sie sich den Quellcode dieser Seite an.
-      <kbd>(Kontextmenu: Seitenquelltext anzeigen)</kbd></p>
+    <div id="content"></div>
   </body>
 </html>
