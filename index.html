@@ -41,8 +41,10 @@
             navigator.mediaDevices.getUserMedia(constraints)
                 .then((stream) => {
                     player.srcObject = stream;
+                    const canvas2 = document.getElementById('camera_input');
+                    const context2 = canvas2.getContext('2d');
                     (function loop() {
-                            context.drawImage(player, 0, 0, canvas.width, canvas.height);
+                            context2.drawImage(player, 0, 0, canvas2.width, canvas2.height);
                             setTimeout(loop, 1000 / 30); // drawing at 30fps
                     })();
                 });
@@ -54,7 +56,7 @@
     <div id="content"></div>
     <button id="capture">Capture</button>
     <video id="player" controls autoplay></video>
-    <canvas id="camera_input"></canvas>
+    <canvas id="camera_input" width="320" height="240"></canvas>
     <div class="img_shot">
 
     </div>
