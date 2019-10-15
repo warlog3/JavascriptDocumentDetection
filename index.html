@@ -26,9 +26,9 @@
                 // Draw the video frame to the canvas.
 
                 var canvas = $(document.createElement("CANVAS"));
-                canvas.attr('width',320);
-                canvas.attr('height',240);
-                canvas.attr('id','canvas'+counter);
+                $(canvas).attr('width',320);
+                $(canvas).attr('height',240);
+                $(canvas).attr('id','canvas'+counter);
                 $('.img_shot').append(canvas);
 
                 let canvas_obj = document.getElementById('canvas'+counter);
