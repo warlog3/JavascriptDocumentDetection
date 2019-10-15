@@ -35,6 +35,8 @@
                 console.log(canvas_obj);
                 let context = canvas_obj.getContext('2d');
                 context.drawImage(player, 0, 0, canvas_obj.width, canvas_obj.height);
+                context.fillStyle = "#FF0000";
+                context.fillRect(0,0,150,75);
                 counter++;
             });
 
