@@ -25,12 +25,15 @@
             captureButton.addEventListener('click', () => {
                 // Draw the video frame to the canvas.
 
-                let canvas = document.createElement('canvas');
-                canvas.attr('id','canvas'+counter)
+                var canvas = document.createElement("CANVAS");
+                canvas.attr('width',320);
+                canvas.attr('height',240);
+                canvas.attr('id','canvas'+counter);
                 $('.img_shot').append(canvas);
 
-                let context = canvas.getContext('2d');
-                context.drawImage(player, 0, 0, canvas.width, canvas.height);
+                let canvas_obj = document.getElementById('canvas'+counter);
+                let context = canvas_obj.getContext('2d');
+                context.drawImage(player, 0, 0, canvas_obj.width, canvas_obj.height);
                 counter++;
             });
 
