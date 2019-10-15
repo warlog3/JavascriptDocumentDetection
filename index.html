@@ -13,8 +13,8 @@
             console.log(supported);
 
             const player = document.getElementById('player');
-            //const canvas = document.getElementById('canvas');
-            //const context = canvas.getContext('2d');
+            const canvas = document.getElementById('canvas');
+            const context = canvas.getContext('2d');
             const captureButton = document.getElementById('capture');
             var counter = 0;
 
@@ -26,23 +26,25 @@
                 // Draw the video frame to the canvas.
 
                 var canvas = $(document.createElement("CANVAS"));
-                $(canvas).attr('width',320);
-                $(canvas).attr('height',240);
-                $(canvas).attr('id','canvas'+counter);
+                $(canvas).attr('width', 320);
+                $(canvas).attr('height', 240);
+                $(canvas).attr('id', 'canvas' + counter);
                 $('.img_shot').append(canvas);
 
-                let canvas_obj = document.getElementById('canvas'+counter);
+                let canvas_obj = document.getElementById('canvas' + counter);
                 console.log(canvas_obj);
                 let context = canvas_obj.getContext('2d');
                 context.drawImage(player, 0, 0, canvas_obj.width, canvas_obj.height);
-                context.fillStyle = "#FF0000";
-                context.fillRect(0,0,150,75);
                 counter++;
             });
 
             navigator.mediaDevices.getUserMedia(constraints)
                 .then((stream) => {
                     player.srcObject = stream;
+                    (function loop() {
+                            context.drawImage(player, 0, 0, canvas.width, canvas.height);
+                            setTimeout(loop, 1000 / 30); // drawing at 30fps
+                    })();
                 });
         });
     </script>
@@ -52,6 +54,7 @@
     <div id="content"></div>
     <button id="capture">Capture</button>
     <video id="player" controls autoplay></video>
+    <canvas id="camera_input"></canvas>
     <div class="img_shot">
 
     </div>
